@@ -1,0 +1,149 @@
+body{
+    text-align: center;
+}
+
+header, footer{
+    padding: 20px;
+    border: none;
+    border-radius: 8px;
+    background: darkorchid;
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+main{
+    padding: 20px;
+    justify-content: space-between;
+}
+
+/* Aqui é para o markdonw a que leva para o instagram*/
+#insta{
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    background: purple;
+    color: white;
+    font-size: 20px;
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#insta:hover{
+    transform: scale(1.05);
+    background: yellow;
+    color: black;
+}
+
+#insta:active{
+    transform: scale(0.98);
+}
+
+#container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+    text-align: center;
+    justify-content: center;
+}
+
+.card{
+    width: 325px;
+    height: 300px;
+    padding: 15px;
+    font-size: 15px;
+    border: none;
+    border-radius: 8px;
+    background-color: pink;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card:active{
+    transform: scale(0.98);
+}
+
+.card:hover{
+    transform: scale(1.05);
+}
+
+
+.card img{
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    display: block;
+    border-radius: 8px;
+}
+
+#addBtn{
+    padding: 12px 24px;
+    border: none;
+    background: #2563eb;
+    color: white;
+    border-radius: 8px;
+    transition: 0.3s;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    font-weight: 600;
+    font-size: 16px;
+}
+
+#addBtn:hover{
+    background: #1d4ed8;
+    transform: scale(1.05);
+}
+
+#addBtn:active{
+    transform: scale(0.98);
+}
+
+#removeBtn{
+    padding: 12px 24px;
+    border: none;
+    background: red;
+    color: white;
+    border-radius: 8px;
+    transition: 0.3s;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    font-weight: 600;
+    font-size: 16px;
+}
+
+#removeBtn:hover{
+    background-color: rgb(207, 11, 11);
+    transform: scale(1.05);
+}
+
+#removeBtn:active{
+    transform: scale(0.98);
+}
+
+#newCuriosidade{
+    padding: 12px 24px;
+    border: none;
+    background-color: #00FF00;
+    color: white;
+    border-radius: 8px;
+    transition: 0.3s;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    font-weight: 600;
+    font-size: 16px;
+}
+
+#newCuriosidade:hover{
+    background-color: #32CD32;
+    transform: scale(1.05);
+}
+
+#newCuriosidade:active{
+    transform: scale(0.98);
+}
