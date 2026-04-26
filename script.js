@@ -122,10 +122,15 @@ function closeMenu(){
 function temaDefault(){
     document.documentElement.style.setProperty('--cor-fundo', '#9932cc');
     document.documentElement.style.setProperty('--cor-texto', 'white');
+    document.documentElement.style.setProperty('--cor-fonte', 'purple');
+    document.documentElement.style.setProperty('--cor-fontetexto', 'white');
+
 
 }
 
 function temaDark(){
     document.documentElement.style.setProperty('--cor-fundo', 'black');
     document.documentElement.style.setProperty('--cor-texto', 'white');
+    document.documentElement.style.setProperty('--cor-fonte', 'white');
+    document.documentElement.style.setProperty('--cor-fontetexto', 'black');
 }
