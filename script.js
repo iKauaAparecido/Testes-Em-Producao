@@ -14,7 +14,9 @@ removeBtn.addEventListener("click", () => {
     const lastCard = container.lastElementChild;
     if (lastCard) {
         container.removeChild(lastCard);
-        count--;
+        if(count > 0){
+            count--;
+        } 
     }
 });
 
@@ -107,4 +109,23 @@ function criarCard(){
     container.appendChild(card);
 
     count++;
+}
+
+function openMenu(){
+    document.getElementById("menu_aba").style.display = "block";
+}
+
+function closeMenu(){
+    document.getElementById("menu_aba").style.display = "none";
+}
+
+function temaDefault(){
+    document.documentElement.style.setProperty('--cor-fundo', '#9932cc');
+    document.documentElement.style.setProperty('--cor-texto', 'white');
+
+}
+
+function temaDark(){
+    document.documentElement.style.setProperty('--cor-fundo', 'black');
+    document.documentElement.style.setProperty('--cor-texto', 'white');
 }

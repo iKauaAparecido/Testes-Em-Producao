@@ -1,13 +1,19 @@
+:root{
+   --cor-fundo: #9932cc;
+   --cor-texto: white;
+}
+
 body{
     text-align: center;
+
 }
 
 header, footer{
     padding: 20px;
     border: none;
     border-radius: 8px;
-    background: darkorchid;
-    color: white;
+    background: var(--cor-fundo);
+    color: var(--cor-texto);
     text-align: center;
     font-size: 30px;
     margin-bottom: 10px;
@@ -147,3 +153,46 @@ main{
 #newCuriosidade:active{
     transform: scale(0.98);
 }
+
+#menu{
+    position: fixed;
+    top: 10px;
+    left: 0;
+    width: 75px;
+    height: 50px;
+    background: none;
+    color: white;
+    padding: 10px;
+    margin: 10px;
+    z-index: 1;
+    font-size: 30px;
+    cursor: pointer;
+    transition: 0.5;
+}
+
+#menu:active{
+    transform: scale(0.98);
+    transition: 0.5s;
+}
+
+#menu:hover{
+    transform: scale(1.2);
+    transition: 0.5s;
+}
+
+#menu_aba{
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: white;
+  color: black;
+  overflow-x: hidden;
+  transition: 0.5s;
+  z-index: 1;
+  display: none;
+  border-radius: 10px;
+  font-size: 40px;
+}
+
