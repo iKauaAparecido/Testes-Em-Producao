@@ -134,3 +134,71 @@ function temaDark(){
     document.documentElement.style.setProperty('--cor-fonte', 'white');
     document.documentElement.style.setProperty('--cor-fontetexto', 'black');
 }
+
+const estruturaCarrosel = [
+    {
+        endereco: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa",
+        texto: "Astronautas relatam que o espaço tem cheiro — quando voltam da caminhada espacial, o traje fica com odor de: metal quente / carne grelhada / pólvora" 
+    },
+    {
+        endereco: "https://images.unsplash.com/photo-1545670723-196ed0954986",
+        texto: "Programação é muito divertido porém tbm é difícil"
+    },
+    {
+        endereco: "https://images.unsplash.com/photo-1508182314998-3bd49473002f",
+        texto: "Montanhas ao entardecer"
+    },
+    {
+        endereco: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b",
+        texto: "Chalé bonito"
+    },
+    {
+        endereco: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564",
+        texto: "Puta estrela foda"
+    }
+]
+    
+
+
+const carrosel = document.querySelector(".carrosel");
+
+const track = document.createElement("div");
+track.classList.add("track")
+
+carrosel.appendChild(track);
+
+
+estruturaCarrosel.forEach((item) => {
+    const img = document.createElement("img");
+    const texto = document.createElement("p");
+    let container = document.createElement("div");
+
+    container.classList.add("containerCarrosel");
+
+    img.src = item.endereco;
+    texto.textContent = item.texto;
+
+    container.appendChild(img);
+    container.appendChild(texto);
+
+    track.appendChild(container);
+    
+
+}); 
+
+let index = 0;
+const total = estruturaCarrosel.length;
+
+
+function moverCarrosel(){
+    
+    index++;
+
+    if(index >= total){
+        index = 0;
+    }
+    
+    track.style.transform = `translateX(-${index * 100}%)`;
+}
+
+setInterval(moverCarrosel, 3000);
