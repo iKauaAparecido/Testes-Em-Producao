@@ -198,7 +198,44 @@ function moverCarrosel(){
         index = 0;
     }
     
-    track.style.transform = `translateX(-${index * 100}%)`;
+    atualizarCarrosel();
 }
 
-setInterval(moverCarrosel, 3000);
+let intervalo = setInterval(moverCarrosel, 3000);
+
+
+carrosel.addEventListener("mouseenter", () => {
+    clearInterval(intervalo);
+}
+)
+
+carrosel.addEventListener("mouseleave", () => {
+    intervalo = setInterval(moverCarrosel, 3000);
+})
+
+const next = document.getElementById("next");
+const prev = document.getElementById("prev");
+
+next.addEventListener("click", () => {
+    index++;
+
+    if(index >= total){
+        index = 0;
+    }
+
+    atualizarCarrosel();
+})
+
+prev.addEventListener("click", () => {
+    index--;
+
+    if(index < 0){
+        index = total - 1;
+    }
+
+    atualizarCarrosel();
+})
+
+function atualizarCarrosel(){
+    track.style.transform = `translateX(-${index * 100}%)`;
+}
