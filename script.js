@@ -6,7 +6,8 @@ let count = 1;
 
 // adicionar card dinamicamente
 addBtn.addEventListener("click", () => {
-    criarCard();
+    const dado = gerarCuriosidade();
+    criarCardPersonalizado(dado);
 });
 
 // remover cards
@@ -60,20 +61,24 @@ function gerarCuriosidade() {
     return curiosidadesBase[index];
 }
 
-const newCuriosidade = document.getElementById("newCuriosidade");
 
-//Evento que cria uma nova curisidade que o usuario deseja colocar
-//Inserindo titulo, imagem e texto
-newCuriosidade.addEventListener("click", () => {
+const botaoAdd = document.getElementById("newCuriosidade");
+const formulario = document.getElementById("formulario");
 
-    //Cria os popups para o usuario digitar
-    const titulo = prompt("Digite o título:");
-    const imagem = prompt("Digite a URL da imagem:");
-    const texto = prompt("Digite o texto:");
+botaoAdd.addEventListener("click", () => {
+    formulario.style.display = "block";
+})
 
-    if (!titulo || !imagem || !texto) return; //verfica se é nulo
+//Criando novos cards com formulario
+const form = document.getElementById("formCuriosidade");
 
-    //cria um objeto com os valores fornecidos do usuario
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const titulo = document.getElementById("titulo").value;
+    const imagem = document.getElementById("imagem").value;
+    const texto = document.getElementById("texto").value;
+
     const novaCuriosidade = {
         id: Date.now(),
         titulo,
@@ -81,34 +86,29 @@ newCuriosidade.addEventListener("click", () => {
         imagem
     };
 
-    //adiciona na base de curiosidades (não fica salvo local, assim que a pag atualiza)
-    //volta para a base de antes
     curiosidadesBase.push(novaCuriosidade);
+
+    // cria o card com esses dados
+    criarCardPersonalizado(novaCuriosidade);
+
+    form.reset();
+    formulario.style.display = "none"; // esconde depois
 });
 
+
+
 //Função que cria os cards
-function criarCard(){
+function criarCardPersonalizado(dado){
     const card = document.createElement("div");
     card.classList.add("card");
-    const conteudoSrc = gerarCuriosidade();
 
     card.innerHTML = `
-        <h3>${conteudoSrc.titulo}</h3>
-        <img src="${conteudoSrc.imagem}" alt="Imagem da curiosidade">
-        <p>${conteudoSrc.texto}</p>
+        <h3>${dado.titulo}</h3>
+        <img src="${dado.imagem}">
+        <p>${dado.texto}</p>
     `;
 
-    card.addEventListener("mouseenter", () => {
-        card.style.background = "#EE82EE";
-    });
-
-    card.addEventListener("mouseleave", () => {
-        card.style.background = "pink";
-    });
-
     container.appendChild(card);
-
-    count++;
 }
 
 function openMenu(){
@@ -171,17 +171,17 @@ carrosel.appendChild(track);
 estruturaCarrosel.forEach((item) => {
     const img = document.createElement("img");
     const texto = document.createElement("p");
-    let container = document.createElement("div");
+    let containerCarrossel = document.createElement("div");
 
-    container.classList.add("containerCarrosel");
+    containerCarrossel.classList.add("containerCarrosel");
 
     img.src = item.endereco;
     texto.textContent = item.texto;
 
-    container.appendChild(img);
-    container.appendChild(texto);
+    containerCarrossel.appendChild(img);
+    containerCarrossel.appendChild(texto);
 
-    track.appendChild(container);
+    track.appendChild(containerCarrossel);
     
 
 }); 
