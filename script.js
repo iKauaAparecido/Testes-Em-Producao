@@ -7,7 +7,11 @@ let count = 1;
 // adicionar card dinamicamente
 addBtn.addEventListener("click", () => {
     const dado = gerarCuriosidade();
-    criarCardPersonalizado(dado);
+
+    if(dado){
+        criarCardPersonalizado(dado);
+    }
+    
 });
 
 // remover cards
@@ -22,41 +26,32 @@ removeBtn.addEventListener("click", () => {
 });
 
 //Base de curiosidades
-const curiosidadesBase = [
-    {
-        id: 1,
-        titulo: "Polvo tem 3 corações",
-        texto: "Polvos possuem três corações e sangue azul. Dois bombeiam sangue para as brânquias e um para o resto do corpo.",
-        imagem: "img/polvo.jpg",
-    },
-    {
-        id: 2,
-        titulo: "O Espaço é silencioso",
-        texto: "No espaço não há ar, então o som não se propaga. Por isso, explosões no espaço seriam totalmente silenciosas. Isso enfatiza que somente ondas eletromagnéticas andam no espaço",
-        imagem: "img/space.jpeg"
-    },
-    {
-        id: 3,
-        titulo: "Usamos quase 100% do cérebro",
-        texto: "O mito de que usamos apenas 10% do cérebro é falso. Exames mostram que praticamente todas as áreas têm alguma função.",
-        imagem: "img/brain.jpg"
-    },
-    {
-        id: 4,
-        titulo: "A Terra não é perfeitamente redonda",
-        texto: "A Terra é levemente achatada nos polos e mais larga no equador, formando um 'geoide' ",
-        imagem: "img/earth.jpg"
-    },
-    {
-        id: 5,
-        titulo: "Água pode ferver e congelar ao mesmo tempo",
-        texto: "Em condições especiais chamadas “ponto triplo”, a água pode existir nos três estados ao mesmo tempo.",
-        imagem: "img/waterExperiment.jpg"
-    },
-]
+let curiosidadesBase = [];
+
+addBtn.disable = true;
+
+//Carrega as curiosidades do arquivo json
+async function carregarCuriosidades(){
+    const response = await fetch("curiosidades.json")
+    const dados = await response.json();
+
+    curiosidadesBase = dados;
+
+    addBtn.disable = false;
+
+    console.log("Dados carregados: ", curiosidadesBase);
+}
+
+carregarCuriosidades();
 
 //Essa função gera aleatoriamente uma curiosidade do objeto curiosidadesBase
 function gerarCuriosidade() {
+
+    if(curiosidadesBase.length === 0){
+        console.warn("Ainda não carregou o JSON");
+        return null;
+    }
+
     const index = Math.floor(Math.random() * curiosidadesBase.length);
     return curiosidadesBase[index];
 }
